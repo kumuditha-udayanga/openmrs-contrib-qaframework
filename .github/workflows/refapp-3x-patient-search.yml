@@ -14,13 +14,21 @@ jobs:
       run:
         working-directory: ./qaframework-bdd-tests
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout qaframework
+        uses: actions/checkout@master
+        with:
+          repository: ${{github.repository}}
+      - name: Run db and web containers
+        run: |
+          docker-compose -f docker/docker-compose-refqa.yml up -d
       - name: Using Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
       - name: Installing dependencies
         run: npm install
+      - name: Run RefApp 3.x frontend
+        run: npx openmrs@next start --backend http://localhost:8080 --port 8081 &
       - name: Run patient search workflow tests
         run: npm run refapp3PatientSearch
       - name: Upload screen recordings of failed tests
