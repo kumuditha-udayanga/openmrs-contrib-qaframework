@@ -20,7 +20,7 @@ jobs:
           repository: ${{github.repository}}
       - name: Run db and web containers
         run: |
-          docker-compose -f docker/docker-compose-refqa3x.yml up -d
+          docker-compose -f docker/docker-compose-refqa.yml up -d
       - name: Using Node.js
         uses: actions/setup-node@v1
         with:
