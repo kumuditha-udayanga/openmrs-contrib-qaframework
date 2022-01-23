@@ -7,6 +7,6 @@ Feature: User Login
 
     Examples:
       | username   | password   | location          | ability |
-      | admin2     | Admin123   | Registration Desk | able    |
-      | wrong user | Admin123   | Registration Desk | unable  |
-      | admin2     | wrong pass | Registration Desk | unable  |
+      | admin      | Admin123   | Inpatient Ward | able    |
+      | wrong user | Admin123   | Inpatient Ward | unable  |
+      | admin      | wrong pass | Inpatient Ward | unable  |
