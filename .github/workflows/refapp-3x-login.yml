@@ -22,7 +22,7 @@ jobs:
         run: |
           docker-compose -f docker/docker-compose-refqa.yml up -d
       - name: Wait for Openmrs instance to start
-        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost/openmrs/spa/login)" != "200" ]]; do sleep 1; done
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost/openmrs/ws/rest/v1/session)" != "200" ]]; do sleep 1; done
       - name: Using Node.js
         uses: actions/setup-node@v1
         with:
